@@ -1,0 +1,25 @@
+/* app css stylesheet */
+header {
+  margin-bottom: 15px;
+}
+
+.menu {
+  border-bottom: 1px solid black;
+  padding:5px 0;
+}
+
+.create-user-form .input-group {
+  margin-bottom: 20px;
+}
+.create-user-form {
+  float: none;
+}
+.create-user-form .exist input {
+  border-color: rgb(169, 68, 66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.exist .input-group-addon {
+  background-color: rgb(242, 222, 222);
+  border-color: rgb(169, 68, 66);
+  color: rgb(169, 68, 66);
+}

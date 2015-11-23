@@ -1,0 +1,123 @@
+<div ng-include="'app/views/shared/header.html'"></div>
+
+<div class="container">
+
+    <div class="row">
+
+        <form name="userForm" ng-submit="createUser()" class="create-user-form center-block col-sm-4" novalidate>
+
+            <div class="input-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine && submitted}">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input
+                        ng-minlength="3"
+                        ng-maxlength="20"
+                        ng-required="true"
+                        ng-model="user.name"
+                        type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+
+            <p ng-show="userForm.username.$error.minlength && submitted" class="help-block">Name is too short.</p>
+            <p ng-show="userForm.username.$error.maxlength && submitted" class="help-block">Name is too long.</p>
+            <div class="input-group" ng-class="{
+             'has-error' : userForm.email.$invalid && !userForm.email.$pristine && submitted,
+             'exist' : !existEmail
+             }">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input ng-required="true"
+                       ng-model="user.email"
+                       ng-pattern="emailPattern"
+                       type="email" name="email"  class="form-control" placeholder="Email">
+            </div>
+
+            <p ng-show="!existEmail && submitted && !userForm.email.$pristine" class="help-block">
+                Email already exist.
+            </p>
+
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine && submitted" class="help-block">
+                Enter a valid email.
+            </p>
+            <div class="input-group" ng-class="{
+             'has-error' : userForm.telephone.$invalid && !userForm.telephone.$pristine && submitted,
+             'exist' : !existPhone
+              }">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                <input ng-pattern="onlyNumbers"
+                       ng-required="true"
+                       ng-model="user.telephone"
+                       type="text" name="telephone" class="form-control" placeholder="Telephone">
+            </div>
+
+            <p ng-show="!existPhone && submitted && !userForm.telephone.$pristine" class="help-block">
+                Phone number already exist.
+            </p>
+
+            <p ng-show="userForm.telephone.$invalid && !userForm.telephone.$pristine && submitted" class="help-block">
+                Fill this field right
+            </p>
+
+            <div class="input-group" ng-class="{ 'has-error' : userForm.address.$invalid && !userForm.address.$pristine && submitted }">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                <input ng-required="true"
+                       ng-model="user.address"
+                       ng-minlength="5"
+                       ng-maxlength="30"
+                       type="text" name="address"  class="form-control" placeholder="Address">
+            </div>
+
+            <p ng-show="userForm.address.$error.minlength && submitted" class="help-block">Address is too short.</p>
+            <p ng-show="userForm.address.$error.maxlength && submitted" class="help-block">Address is too long.</p>
+
+            <div class="input-group" ng-class="{ 'has-error' : userForm.street.$invalid && !userForm.street.$pristine && submitted }">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-road"></i></span>
+                <input ng-required="true"
+                       ng-model="user.street"
+                       ng-minlength="3"
+                       ng-maxlength="20"
+                       type="text" name="street"  class="form-control" placeholder="Street">
+            </div>
+
+            <p ng-show="userForm.street.$error.minlength && submitted" class="help-block">Street name is too short.</p>
+            <p ng-show="userForm.street.$error.maxlength && submitted" class="help-block">Street name is too long.</p>
+
+            <div class="input-group" ng-class="{ 'has-error' : userForm.city.$invalid && !userForm.city.$pristine && submitted }">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                <input ng-required="true"
+                       ng-model="user.city"
+                       type="text" name="city"  class="form-control" placeholder="City">
+            </div>
+
+            <p ng-show="userForm.city.$invalid && !userForm.city.$pristine && submitted" class="help-block">Please fill this field</p>
+
+            <div class="input-group" ng-class="{ 'has-error' : userForm.state.$invalid && !userForm.state.$pristine && submitted }">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                <input ng-required="true"
+                       ng-model="user.state"
+                       type="text" name="state" class="form-control" placeholder="State">
+            </div>
+
+            <p ng-show="userForm.state.$invalid && !userForm.state.$pristine && submitted" class="help-block">Please fill this field</p>
+
+            <div class="input-group" ng-class="{ 'has-error' : userForm.zip.$invalid && !userForm.zip.$pristine && submitted }">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-inbox"></i></span>
+                <input ng-required="true"
+                       ng-model="user.zip"
+                       ng-pattern="onlyNumbers"
+                       ng-minlength="9"
+                       ng-maxlength="9"
+                       type="text" name="zip"  class="form-control" placeholder="Zip">
+            </div>
+
+            <p ng-show="userForm.zip.$invalid && !userForm.zip.$pristine && submitted" class="help-block">Enter 9 digits</p>
+
+            <button type="submit" class="btn btn-primary pull-right">
+                <span ng-show="create"> Create</span>
+                <span ng-show="edit"> Edit</span>
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
